@@ -7,9 +7,9 @@ echo provide an ip address to scan:
 
 read ip;
 
-`sleep 1m && pkill masscan` &
+`sleep 3m && pkill masscan` &
 
-masscan -p1-65535,U:1-65535 $ip --rate=5000 -e tun0 >> mass.scan ;
+masscan -p1-65535,U:1-65535 $ip --rate=1200 -e tun0 >> mass.scan ;
 
 #cat mass.scan | cut -d ' ' -f 4 | grep udp | cut -d '/' -f 1 > udp.ports;
 cat mass.scan | cut -d ' ' -f 4 | grep tcp | cut -d '/' -f 1 > tcp.ports;
